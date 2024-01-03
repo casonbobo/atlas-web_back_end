@@ -4,4 +4,4 @@
 
 def floor(a: float) -> int:
     """its right below you"""
-    return a
+    return int(a)
