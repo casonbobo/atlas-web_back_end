@@ -7,3 +7,4 @@ def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     """This is a toople"""
     kv_tuple: Tuple = (k, v*v)
     return kv_tuple
+ 
