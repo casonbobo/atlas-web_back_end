@@ -3,8 +3,8 @@
 
 
 def sum_list(input_list: list[float]) -> float:
-    """This is a function that adds a list"""
-    total: int = 0
+    """This is a function that adds a list together"""
+    total: float = 0
     for number in input_list:
         total += number
     return total
