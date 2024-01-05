@@ -5,6 +5,7 @@ import asyncio
 
 
 async def async_generator():
+    """This is for making async numbers"""
     for _ in range(10):
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
