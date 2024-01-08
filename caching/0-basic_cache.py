@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """Merry Christmas"""
+BaseCaching = __import__('base_caching').BaseCaching
+
 
 
 class BasicCache(BaseCaching):
     """This is a class that inheirits from caching"""
     def put(self, key, item):
+        """put func"""
         if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key, item):
+        """get func"""
         if key is None or key is not in self.cache_data:
             return None
         else:
