@@ -2,7 +2,7 @@
 """I already don't like these tasks"""
 
 
-def FIFOCache(BaseCaching):
+class FIFOCache(BaseCaching):
     def __init__(self):
         super().__init__()
 
