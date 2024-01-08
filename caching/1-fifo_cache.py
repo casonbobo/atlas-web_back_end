@@ -3,11 +3,10 @@
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-
 class FIFOCache(BaseCaching):
-    """FIFO"""
+    """FIFOCache for fifo things"""
     def __init__(self):
-        """init"""
+        """init func"""
         super().__init__()
 
     def put(self, key, item):
