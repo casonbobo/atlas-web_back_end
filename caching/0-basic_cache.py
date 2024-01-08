@@ -6,7 +6,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 class BasicCache(BaseCaching):
     """This is a class that inheirits from caching"""
     def put(self, key, item):
-        """put func"""
+        """put func. This is so dumb who puts a requirment"""
         if key is not None and item is not None:
             self.cache_data[key] = item
 
