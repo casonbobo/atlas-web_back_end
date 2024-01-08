@@ -2,7 +2,7 @@
 """Merry Christmas"""
 
 
-class BaseCache(BaseCaching):
+class BasicCache(BaseCaching):
     """This is a class that inheirits from caching"""
     def put(self, key, item):
         if key is not None and item is not None:
