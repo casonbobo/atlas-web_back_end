@@ -13,13 +13,13 @@ class FIFOCache(BaseCaching):
         """put func. This is so dumb who puts a requirment"""
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                del self.cache_data[next(iter(self.cache_data))]
                 print("DISCARD:", next(iter(self.cache_data)))
+                del self.cache_data[next(iter(self.cache_data))]
             self.cache_data[key] = item
 
-    def get(self, key, item):
+    def get(self, key):
         """get func. This is so dumb who puts a requirment"""
-        if key is None or key not in self.cache_data:
+        if key is None and key not in self.ca:
             return None
         else:
             return self.cache_data[key]
