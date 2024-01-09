@@ -19,7 +19,7 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         """get func. This is so dumb who puts a requirment"""
-        if key is None and key not in self.ca:
+        if key is None and key not in self.cache_data:
             return None
         else:
             return self.cache_data[key]
