@@ -13,8 +13,10 @@ class MRUCache(BaseCaching):
         """put func. This is so dumb who puts a requirment"""
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                print("DISCARD:", list(self.cache_data.keys())[self.MAX_ITEMS - 1])
-                del self.cache_data[list(self.cache_data.keys())[self.MAX_ITEMS - 1]]
+                print("DISCARD:", list(self.cache_data.keys())
+                      [self.MAX_ITEMS - 1])
+                del self.cache_data[list(self.cache_data.keys())
+                                    [self.MAX_ITEMS - 1]]
             self.cache_data[key] = item
 
     def get(self, key):
