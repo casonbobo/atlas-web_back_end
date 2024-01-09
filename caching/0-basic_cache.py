@@ -11,7 +11,7 @@ class BasicCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key, item):
-        """get func"""
+        """get func. This is so dumb who puts a requirment"""
         if key is None or key not in self.cache_data:
             return None
         else:
