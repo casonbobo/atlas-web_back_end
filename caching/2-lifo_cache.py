@@ -14,7 +14,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """put func. This is so dumb who puts a requirment"""
         if key is not None and item is not None:
-            if len(self.cache_data) > self.MAX_ITEMS:
+            if len(self.cache_data) >= self.MAX_ITEMS:
                 print("DISCARD:", list(self.cache_data.keys())[-1])
                 del self.cache_data[list(self.cache_data.keys())[-1]]
             self.cache_data[key] = item
