@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+"""This is supposed to be a simple helper function"""
 import csv
 import math
 from typing import List
-"""This is supposed to be a simple helper function"""
 
 
 class Server:
@@ -14,7 +14,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset. Is this not enough??"""
+        """Cached dataset"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
