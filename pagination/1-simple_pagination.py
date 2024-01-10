@@ -14,7 +14,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset"""
+        """Cached dataset. Is this not enough??"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
@@ -38,7 +38,6 @@ class Server:
 
         start_index, end_index = self.index_range(page, page_size)
         data = self.dataset()
-
 
         if start_index >= len(data):
             return []
