@@ -44,12 +44,13 @@ class Server:
 
         return data[start_index:end_index]
 
-    def get_hyper(page=1, page_size=10):
-        data = get_page(page, page_size)
+    def get_hyper(self, page=1, page_size=10):
+        """This is my comment for get_hyper"""
+        data = self.get_page(page, page_size)
         total_entries = len(data)
         total_pages = math.ceil(total_entries / page_size)
         next_page = None if page == total_pages else page + 1
         prev_page = None if page == 1 else page - 1
         return {'page_size': page_size, 'page': page,
                 'data': data, 'next_page': next_page,
-                'prev_time': prev_time, 'total_pages': total_pages}
+                'prev_page': prev_page, 'total_pages': total_pages}
