@@ -11,6 +11,7 @@ import typing
 
 def filter_datum(fields: typing.List[str], redaction: str,
                  message: str, separator: str) -> str:
+    """This is a func to obfuscate data through parameters"""
     pattern = '|'.join(fields)
     obfuscated_message = re.sub(pattern, redaction, message)
     return obfuscated_message
