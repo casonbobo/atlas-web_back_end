@@ -5,9 +5,10 @@
     I do not know what I am doing
 """
 import re
+import list
 
 
-def filter_datum(fields, redaction, message, separator):
+def filter_datum(fields: list[str], redaction: str, message: str, separator: str) -> str:
     pattern = '|'.join(fields)
     obfuscated_message = re.sub(pattern, redaction, message)
     return obfuscated_message
