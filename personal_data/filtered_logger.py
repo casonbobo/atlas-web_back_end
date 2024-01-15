@@ -9,7 +9,7 @@ import re
 import typing
 
 
-def filter_datum(fields: list[str], redaction: str,
+def filter_datum(fields: typing.List[str], redaction: str,
                  message: str, separator: str) -> str:
     pattern = '|'.join(fields)
     obfuscated_message = re.sub(pattern, redaction, message)
