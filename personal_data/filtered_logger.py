@@ -10,10 +10,11 @@ from typing import List
 import logging
 
 
-PII_FIELDS: List[str] = ["name", "email", "ssn", "password"]
+PII_FIELDS: List[str] = ["email", "ssn", "password", "phone", "ip"]
+
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class """   
+    """ Redacting Formatter class """
 
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
@@ -38,6 +39,7 @@ def filter_datum(fields: List[str], redaction: str, message: str,
         message = re.sub(field + "=.*?" + separator,
                          field + "=" + redaction + separator, message)
     return message
+
 
 def get_logger() -> logging.Logger:
     """Return a configured logger."""
