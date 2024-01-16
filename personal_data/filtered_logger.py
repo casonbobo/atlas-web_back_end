@@ -10,7 +10,7 @@ from typing import List
 import logging
 
 
-PII_FIELDS: List[str] = ["email", "ssn", "password", "phone", "ip"]
+PII_FIELDS: tuple = ("name", "email", "ssn", "password", "phone")
 
 
 class RedactingFormatter(logging.Formatter):
