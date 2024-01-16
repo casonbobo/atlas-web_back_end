@@ -6,13 +6,30 @@
     I do not know what I am doing
 """
 import re
-import typing
+from typing import List
+import logging
 
 
-def filter_datum(fields: typing.List[str], redaction: str,
-                 message: str, separator: str) -> str:
+class RedactingFormatter(logging.Formatter):
+    """ Redacting Formatter class """
+
+    REDACTION = "***"
+    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
+    SEPARATOR = ";"
+
+    def __init__(self, fields):
+       super(RedactingFormatter, self).__init__(self.FORMAT)
+       self.fields = fields
+
+    def format(self, record: logging.LogRecord) -> str:
+        obfuscated_message = super().format(record)
+        return filter_datum(
+            self.fields, self.REDACTION, obfuscated_message, self.SEPARATOR
+        )
+def filter_datum(fields: List[str], redaction: str, message: str,
+                 separator: str) -> str:
     """This is a func to obfuscate data through parameters"""
-    pattern = '|'.join(f'(?<={separator}{field})(.*?)(?={separator}|$)'
-                       for field in fields)
-    obfuscated_message = re.sub(pattern, f'{separator}{redaction}', message)
-    return obfuscated_message
+    for field in fields:
+        message = re.sub(field + "=.*?" + separator,
+                         field + "=" + redaction + separator, message)
+    return message
