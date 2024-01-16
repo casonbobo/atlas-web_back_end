@@ -17,15 +17,18 @@ class RedactingFormatter(logging.Formatter):
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self, fields):
-       super(RedactingFormatter, self).__init__(self.FORMAT)
-       self.fields = fields
+    def __init__(self, fields: str):
+        super(RedactingFormatter, self).__init__(self.FORMAT)
+        self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
+        """This is should be able to recieve data and feed it into datum"""
         obfuscated_message = super().format(record)
         return filter_datum(
             self.fields, self.REDACTION, obfuscated_message, self.SEPARATOR
         )
+
+
 def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """This is a func to obfuscate data through parameters"""
