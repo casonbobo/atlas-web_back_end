@@ -2,7 +2,7 @@
 """Redux Auth class but now its basic"""
 
 from api.v1.auth.auth import Auth
-import Base64
+import base64
 
 
 class BasicAuth(Auth):
