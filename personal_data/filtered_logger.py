@@ -40,16 +40,27 @@ def filter_datum(fields: List[str], redaction: str, message: str,
                          field + "=" + redaction + separator, message)
     return message
 
+def main():
+    """a func that returns a connector"""
+    log = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users;")
+
+    for row in cursor:
+        log.info(row[0])
+    cursor.close()
+    db.close()
 
 def get_logger() -> logging.Logger:
     """Return a configured logger."""
-    logger = logging.getLogger("user_data")
-    logger.setLevel(logging.INFO)
-    logger.propagate = False
+    log = logging.getLogger("user_data")
+    log.setLevel(logging.INFO)
+    log.propagate = False
 
     handler = logging.StreamHandler()
     handler.setFormatter(RedactingFormatter(PII_FIELDS))
 
-    logger.addHandler(handler)
+    log.addHandler(handler)
 
-    return logger
+    return log
