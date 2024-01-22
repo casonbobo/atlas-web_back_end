@@ -50,39 +50,30 @@ class BasicAuth(Auth):
     def user_object_from_credentials(self, user_email: str, user_pwd: str) \
             -> TypeVar('User'):
         """Returns the User instance based on their email and password"""
-        if user_email is None or not isinstance(user_email, str):
+        if user_email is None or type(user_email) is not str:
             return None
-        if user_pwd is None or not isinstance(user_pwd, str):
-            return None
-
-        user_list = User.search(user_email)
-        if len(user_list) == 0:
+        if user_pwd is None or type(user_pwd) is not str:
             return None
 
-        user = user_list[0]
-        if not user.is_valid_password(user_pwd):
+        try:
+            users = User.search({'email': user_email})
+        except Exception:
             return None
 
-        return user
+        for user in users:
+            if user.is_valid_password(user_pwd):
+                return user
+
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """class BasicAuth that overloads Auth and retrieves the User"""
         if request is None:
             return None
-
-        authorization_header = self.authorization_header(request)
-        if authorization_header is None:
-            return None
-
-        decoded_base64_authorization_header = \
-            self.decode_base64_authorization_header(authorization_header)
-        if decoded_base64_authorization_header is None:
-            return None
-
-        user_email, user_pwd = \
-            self.extract_user_credentials(decoded_base64_authorization_header)
-        if user_email is None or user_pwd is None:
-            return None
-
+        authorized_header = self.authorization_header(request)
+        b64_head = self.extract_base64_authorization_header(authorized_header)
+        dc_head = self.decode_base64_authorization_header(b64_head)
+        user_email, user_pwd = self.extract_user_credentials(dc_head)
         user = self.user_object_from_credentials(user_email, user_pwd)
+
         return user
