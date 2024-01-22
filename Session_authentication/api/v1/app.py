@@ -53,6 +53,8 @@ def before_request():
     if auth.current_user(request) is None:
         abort(403)
 
+    request.current_user = auth.current_user(request)
+
 
 if __name__ == "__main__":
     """main function"""
