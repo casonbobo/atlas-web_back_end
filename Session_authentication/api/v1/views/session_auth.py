@@ -19,7 +19,8 @@ def login():
     user = User.search({"email": email})
     if not user:
         return jsonify({"error": "no user found for this email"}), 404
-    if not user.is_valid_password(password):
+    user_valid = user[0]
+    if not user_valid.is_valid_password(password):
         return jsonify({"error": "wrong password"}), 401
 
     from api.vi.auth import auth
