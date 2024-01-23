@@ -25,7 +25,7 @@ def login():
 
     from api.vi.auth import auth
     session_id = auth.create_session(user.id)
-    response = make_response(jsonify(user.to_json()))
+    response = make_response(jsonify(user_valid.to_json()))
     response.set_cookie(os.getenv('SESSION_NAME'), session_id)
 
     return response
