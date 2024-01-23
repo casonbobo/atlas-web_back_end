@@ -58,6 +58,7 @@ def before_request():
 
     request.current_user = auth.current_user(request)
 
+
 if __name__ == "__main__":
     """main function"""
     host = getenv("API_HOST", "0.0.0.0")
