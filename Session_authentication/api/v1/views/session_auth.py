@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """New view for session Auth"""
-from flask import request, jsonify
+from flask import request, jsonify, make_response
 from api.v1.views import app_views
 from models.user import User
 
@@ -25,6 +25,7 @@ def login():
 
     from api.vi.auth import auth
     import os
+
     session_id = auth.create_session(user.id)
     response = make_response(jsonify(user_valid.to_json()))
     response.set_cookie(os.getenv('SESSION_NAME'), session_id)
