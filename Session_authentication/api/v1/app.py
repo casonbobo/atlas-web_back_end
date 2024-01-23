@@ -19,6 +19,9 @@ if os.getenv('AUTH_TYPE') == 'auth':
 elif os.getenv('AUTH_TYPE') == 'basic_auth':
     from api.v1.auth.basic_auth import BasicAuth
     auth = BasicAuth()
+elif os.getenv('AUTH_TYPE') == 'session_auth':
+    from api.v1.auth.session_auth import SessionAuth
+    auth = SessionAuth()
 
 
 @app.errorhandler(404)
@@ -41,7 +44,7 @@ def unauthorized(error) -> str:
 
 @app.before_request
 def before_request():
-    """pre-request"""
+    """request before the request happens"""
     if auth is None:
         return
     if not auth.require_auth(request.path, ['/api/v1/status/',
@@ -54,6 +57,7 @@ def before_request():
         abort(403)
 
     request.current_user = auth.current_user(request)
+
 
 if environ.get('AUTH_TYPE') == 'session_auth':
     from api.v1.auth.session_auth import SessionAuth
