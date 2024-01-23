@@ -24,6 +24,7 @@ def login():
         return jsonify({"error": "wrong password"}), 401
 
     from api.vi.auth import auth
+    import os
     session_id = auth.create_session(user.id)
     response = make_response(jsonify(user_valid.to_json()))
     response.set_cookie(os.getenv('SESSION_NAME'), session_id)
