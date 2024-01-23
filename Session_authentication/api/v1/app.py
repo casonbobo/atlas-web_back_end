@@ -26,19 +26,19 @@ elif os.getenv('AUTH_TYPE') == 'session_auth':
 
 @app.errorhandler(404)
 def not_found(error) -> str:
-    """Not found"""
+    """Not found error"""
     return jsonify({"error": "Not found"}), 404
 
 
 @app.errorhandler(403)
 def forbidden(error) -> str:
-    """Forbidden"""
+    """Forbidden error"""
     return jsonify({"error": "Forbidden"}), 403
 
 
 @app.errorhandler(401)
 def unauthorized(error) -> str:
-    """Unauthorized"""
+    """Unauthorized error"""
     return jsonify({"error": "Unauthorized"}), 401
 
 
@@ -57,14 +57,6 @@ def before_request():
         abort(403)
 
     request.current_user = auth.current_user(request)
-
-
-if environ.get('AUTH_TYPE') == 'session_auth':
-    from api.v1.auth.session_auth import SessionAuth
-    auth = SessionAuth()
-else:
-    from api.v1.auth.basic_auth import BasicAuth
-    auth = BasicAuth()
 
 if __name__ == "__main__":
     """main function"""
