@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """New view for session Auth"""
-from flask import abort, request, jsonify, make_response
-from api.v1.app import auth
+from flask import request, jsonify
 from api.v1.views import app_views
 from models.user import User
-import os
 
-@app.route('/auth_session/login', methods=['POST'])
+
+@app_views.route('/auth_session/login', methods=['POST'])
 def login():
     email = request.form.get('email')
     password = request.form.get('password')
