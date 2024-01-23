@@ -7,6 +7,7 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'])
 def login():
+    """this is a login method to handle all routes for session auth"""
     email = request.form.get('email')
     password = request.form.get('password')
 
