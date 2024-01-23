@@ -2,6 +2,7 @@
 """validate if everything inherits correctly without any overloading
     validate the “switch” by using environment variables"""
 from api.v1.auth.auth import Auth
+from models.user import User
 # from flask import Flask, request, jsonify, make_response
 import uuid
 import os
