@@ -14,7 +14,7 @@ class Auth:
 
     def __init__(self):
         self._db = DB()
-        
+
     def register_user(self, email: str, password: str) -> User:
         """Register a new user."""
         try:
@@ -22,7 +22,8 @@ class Auth:
                 raise ValueError(f"User {email} already exists.")
         except NoResultFound:
             hashed_password = self._hash_password(password)
-            user = self._db.add_user(email=email, hashed_password=hashed_password)
+            user = self._db.add_user(email=email, \
+                hashed_password=hashed_password)
             return user
 
     def _hash_password(self, password: str) -> bytes:
