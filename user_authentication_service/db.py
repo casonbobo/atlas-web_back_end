@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import InvalidRequestError
+import bcrypt
 
 from user import Base, User
 
@@ -48,3 +49,17 @@ class DB:
             return query
         except InvalidRequestError:
             raise
+
+    def update_user(self, user_id: int, **kwargs):
+        """Update a user."""
+        user = self.find_user_by(id=user_id)
+        if user is None:
+            raise ValueError("No user found with the provided id.")
+
+        for attr, value in kwargs.items():
+            if not hasattr(User, attr):
+                raise ValueError(f"Invalid attribute '{attr}'.")
+            setattr(user, attr, value)
+
+        self._session.commit()
+    
