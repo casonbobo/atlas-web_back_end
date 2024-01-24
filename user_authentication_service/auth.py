@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Hash password for the database"""
 import bcrypt
 from db import DB

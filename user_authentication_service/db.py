@@ -50,7 +50,7 @@ class DB:
         except InvalidRequestError:
             raise
 
-    def update_user(self, user_id: int, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """Update a user."""
         user = self.find_user_by(id=user_id)
         if user is None:
@@ -62,4 +62,3 @@ class DB:
             setattr(user, attr, value)
 
         self._session.commit()
-    
