@@ -32,7 +32,7 @@ def session():
     password = request.form.get("password")
 
     if not email or not password:
-        abort(400)
+        abort(401)
 
     try:
         if AUTH.valid_login(email, password):
