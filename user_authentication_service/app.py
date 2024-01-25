@@ -40,9 +40,9 @@ def session():
         session_id = AUTH.create_session(email)
         response = jsonify({"email": email})
         response.set_cookie("session_id", session_id)
-    else:
+        return response
+    except:
         abort(401)
-    return response
 
 
 if __name__ == "__main__":
