@@ -36,11 +36,12 @@ def session():
 
     if not AUTH.valid_login(email, password):
         abort(401)
-
-    session_id = AUTH.create_session(email)
-    response = jsonify({"email": email})
-    response.set_cookie("session_id", session_id)
-
+    try:
+        session_id = AUTH.create_session(email)
+        response = jsonify({"email": email})
+        response.set_cookie("session_id", session_id)
+    else:
+        abort(401)
     return response
 
 
