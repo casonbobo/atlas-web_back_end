@@ -60,7 +60,7 @@ def logout():
     return redirect('/')
 
 
-@app.route("/", methods=["GET"])
+@app.route("/profile", methods=["GET"])
 def profile():
     """profile structure"""
     session_id = request.cookies.get('session_id', None)
