@@ -32,16 +32,17 @@ def session():
     password = request.form.get("password")
 
     if not email or not password:
-        abort(401)
+        abort(400)
 
-    if not AUTH.valid_login(email, password):
-        abort(401)
     try:
-        session_id = AUTH.create_session(email)
-        response = jsonify({"email": email})
-        response.set_cookie("session_id", session_id)
-        return response
-    except:
+        if AUTH.valid_login(email, password):
+            session_id = AUTH.create_session(email)
+            response = jsonify({"email": email})
+            response.set_cookie("session_id", session_id)
+            return response
+        else:
+            abort(401)
+    except ValueError:
         abort(401)
 
 
