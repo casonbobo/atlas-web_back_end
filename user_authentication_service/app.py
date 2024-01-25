@@ -26,5 +26,23 @@ def users():
         return jsonify({"message": str(e)}), 400
 
 
+@sessions_bp.route("/sessions", methods=["POST"])
+def session():
+    email = request.form.get("email")
+    password = request.form.get("password")
+    
+    if not email or not password:
+        abort(401)
+
+    if not AUTH.valid_login(email, password):
+        abort(401)
+
+    session_id = AUTH.create_session(email)
+    response = jsonify({"email": email})
+    response.set_cookie("session_id", session_id)
+
+    return response
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
