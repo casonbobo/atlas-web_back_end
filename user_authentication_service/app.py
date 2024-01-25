@@ -26,11 +26,11 @@ def users():
         return jsonify({"message": str(e)}), 400
 
 
-@sessions_bp.route("/sessions", methods=["POST"])
+@app.route("/sessions", methods=["POST"])
 def session():
     email = request.form.get("email")
     password = request.form.get("password")
-    
+
     if not email or not password:
         abort(401)
 
