@@ -36,7 +36,7 @@ def session():
 
     try:
         if AUTH.valid_login(email, password):
-            session_id = AUTH.create_session(email)
+            session_id = str(uuid.uuid4())
             response = jsonify({"email": email})
             response.set_cookie("session_id", session_id)
             return response
