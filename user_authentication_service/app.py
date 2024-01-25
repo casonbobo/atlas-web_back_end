@@ -14,13 +14,13 @@ def welcome():
     return jsonify({"message": "Bienvenue"})
 
 
-@users_bp.route("/", methods=["POST"])
+@users_bp.route("/users", methods=["POST"])
 def users():
     """register a user"""
     try:
         email = request.form.get("email")
         password = request.form.get("password")
-        user = auth.register_user(email, password)
+        user = AUTH.register_user(email, password)
         return jsonify({"email": email, "message": "user created"}), 200
     except ValueError as e:
         return jsonify({"message": str(e)}), 400
