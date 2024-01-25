@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Starts and runs a basuc flask app"""
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect
 import uuid
 from auth import Auth
 
@@ -47,7 +47,7 @@ def login():
         abort(401)
 
 
-@app.route("/", methods=["DELETE"])
+@app.route("/sessions", methods=["DELETE"])
 def logout():
     """logout method"""
     session_id = request.cookies.get('session_id', None)
