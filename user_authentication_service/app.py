@@ -60,12 +60,12 @@ def logout():
     return redirect('/')
 
 
-@profile_bp.route("/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def profile():
     """profile structure"""
     session_id = request.cookies.get('session_id', None)
     user = AUTH.get_user_from_session_id(session_id)
-    
+
     if session_id is None or user is None:
         abort(403)
 
