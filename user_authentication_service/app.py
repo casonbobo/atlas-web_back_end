@@ -14,7 +14,7 @@ def welcome():
     return jsonify({"message": "Bienvenue"})
 
 
-@users_bp.route("/users", methods=["POST"])
+@app.route("/users", methods=["POST"])
 def users():
     """register a user"""
     try:
