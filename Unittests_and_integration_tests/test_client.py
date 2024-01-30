@@ -17,3 +17,24 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self):
         pass
+
+    def test_public_repos(self):
+        pass
+
+    def test_has_license(self):
+        pass
+
+
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """"""
+
+    @classmethod
+    def setUpClass(cls):
+        pass
+    
+    def tearDownClass(cls):
+        pass
+
+    def test_public_repos(self):
+        pass
