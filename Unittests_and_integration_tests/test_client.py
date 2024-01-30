@@ -14,3 +14,6 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     def test_org(self, org):
         pass
+
+    def test_public_repos_url(self):
+        pass
