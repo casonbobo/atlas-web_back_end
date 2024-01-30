@@ -6,8 +6,9 @@ from parameterized import parameterized
 from unittest.mock import patch, PropertyMock
 from requests.exceptions import HTTPError
 
+
 class TestGithubOrgClient(unittest.TestCase):
-    """"""
+    """Class for testing the GitHubOrg func in client"""
     @parameterized.expand([
         ('google'),
         ('abc')
@@ -18,21 +19,26 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_public_repos_url(self):
         pass
 
-    def test_public_repos(self):
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json):
         pass
 
-    def test_has_license(self):
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+    ])
+    def test_has_license(self, repo, key, expected_output):
         pass
-
 
 
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """"""
+    """Class for testing integration in GitHubOrg"""
 
     @classmethod
     def setUpClass(cls):
         pass
-    
+
+    @classmethod
     def tearDownClass(cls):
         pass
 
