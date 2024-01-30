@@ -27,7 +27,7 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
 
 
-class TestGetJSON(unittest.TestCase):
+class TestGetJson(unittest.TestCase):
     """The class for the get Json test"""
 
     @parameterized.expand([
