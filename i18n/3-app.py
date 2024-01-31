@@ -33,7 +33,7 @@ def gettext():
     """get text func"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-    
+
 # main driver function
 if __name__ == '__main__':
     app.run()
