@@ -2,7 +2,7 @@
 """Cache class stores an instance of the Redis client"""
 import redis
 from uuid import uuid4
-from typing import Union
+from typing import Union, Callable
 
 class Cache:
     """Cache class for Regis"""
