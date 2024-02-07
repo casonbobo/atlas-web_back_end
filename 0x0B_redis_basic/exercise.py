@@ -8,8 +8,8 @@ class Cache:
     """Cache class for Regis"""
     def __init__(self):
         """Init"""
-        self.__redis = redis.Redis()
-        self.__redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Key method"""
