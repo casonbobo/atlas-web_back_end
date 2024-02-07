@@ -20,7 +20,7 @@ class Cache:
     def get(self, key: str, fn: Callable = 
             None) -> Union[str, bytes, int, float]:
         """take the str arg and callable"""
-        data = self._regis.get(key)
+        data = self._redis.get(key)
         if fn:
             return fn(data)
         else:
@@ -28,10 +28,8 @@ class Cache:
 
     def get_str(self, key: str) -> str:
         """turn into string"""
-        value = self.get(key, str)
-        return value
+        return self.get(key, str)
 
     def get_int(self, key: str) -> int:
         """turn into int"""
-        value = self.get(key, int)
-        return value
+        return self.get(key, int)
