@@ -9,12 +9,8 @@ from typing import Union, Callable
 def count_calls(method: Callable) -> Callable:
     @functools.wraps(method)
     def wrapper(*args, **kwargs):
-        instance = args[0]
-        method_qualname = method.__qualname__
-        if method_qualname not in instance.call_counts:
-            instance.call_counts[method_qualname] = 0
-        instance.call_counts[method_qualname] += 1
-        return method(*args, **kwargs)
+        self.__redis.incr(method.__qualname__)
+        return method(self, *args, **kwargs)
     return wrapper
 
 
