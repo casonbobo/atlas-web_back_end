@@ -20,7 +20,7 @@ def call_history(method: Callable) -> Callable:
         method_qualname = method.__qualname__
         input_key = f"{method_qualname}:inputs"
         output_key = f"{method_qualname}:outputs"
-        self. _redis.rpush(input_key, m*map(str, args))
+        self. _redis.rpush(input_key, str(args))
         result = method(self, *args, **kwargs)
         self._redis.rpush(output_key, str(result))
         return result
@@ -34,6 +34,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Key method"""
