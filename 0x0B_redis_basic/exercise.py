@@ -8,9 +8,22 @@ from typing import Union, Callable
 
 def count_calls(method: Callable) -> Callable:
     @functools.wraps(method)
-    def wrapper(*args, **kwargs):
+    def wrapper(self, *args, **kwargs):
         self._redis.incr(method.__qualname__)
         return method(self, *args, **kwargs)
+    return wrapper
+
+
+def call_history(method: Callable) -> Callable:
+    @functools.wraps(method)
+    def wrapper(self, *args, **kwargs):
+        method_qualname = method.__qualname__
+        input_key = f"{method_qualname}:inputs"
+        output_key = f"{method_qualname}:outputs"
+        self. _redis.rpush(input_key, m*map(str, args))
+        result = method(self, *args, **kwargs)
+        self._redis.rpush(output_key, str(result))
+        return result
     return wrapper
 
 
