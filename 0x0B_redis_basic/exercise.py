@@ -59,13 +59,14 @@ class Cache:
         """turn into int"""
         return self.get(key, int)
 
+
 def replay(cache_instance, function_qualname) -> None:
     input_key = f"{function_qualname}:inputs"
     output_key = f"{function_qualname}:outputs"
     inputs = cache_instance._redis.lrange(input_key, 0, -1)
     outputs = cache_instance._redis.lrange(output_key, 0, -1)
     history = list(zip(inputs, outputs))
-     for input_data, output_data in history:
+    for input_data, output_data in history:
         input_str = input_data.decode('utf-8')
         output_str = input_data.decode('utf-8')
         print(f"{method.__qualname__}(*{input_str}) -> {output_str}")
