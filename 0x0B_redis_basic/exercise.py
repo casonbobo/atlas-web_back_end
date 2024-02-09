@@ -6,7 +6,7 @@ from uuid import uuid4
 from typing import Union, Callable
 
 
-def count_call(method: Callable) -> Callable:
+def count_calls(method: Callable) -> Callable:
     @functools.wraps(method)
     def wrapper(*args, **kwargs):
         instance = args[0]
@@ -25,7 +25,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_call
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Key method"""
         key = str(uuid4)
