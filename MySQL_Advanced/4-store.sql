@@ -1,3 +1,5 @@
+-- Creates a trigger
+-- baby BUY BUY BUY
 DELIMITER //
 CREATE TRIGGER decrease_item_quantity
 AFTER INSERT ON orders
