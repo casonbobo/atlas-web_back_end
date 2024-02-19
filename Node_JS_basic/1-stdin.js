@@ -3,17 +3,17 @@
 const readline = require('readline');
 
 const prog = readline.createInterface({
-    input: process.stdin, 
-    output: process. stdout
+  input: process.stdin, 
+  output: process. stdout
 });
 
 
 prog.question('Welcome to Holberton School, what is your name?', (name) => {
-    console.log(`Your name is ${name}`);
-    prog.close();
+  console.log(`Your name is ${name}`);
+  prog.close();
 });
 
 process.on('SIGINT', () => {
-    console.log('This important software is now closing');
-    process.exit();
+  console.log('This important software is now closing');
+  process.exit();
 });
