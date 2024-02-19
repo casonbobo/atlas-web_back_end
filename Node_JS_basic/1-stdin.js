@@ -3,10 +3,9 @@
 const readline = require('readline');
 
 const prog = readline.createInterface({
-  input: process.stdin, 
-  output: process. stdout
+  input: process.stdin,
+  output: process.stdout,
 });
-
 
 prog.question('Welcome to Holberton School, what is your name?', (name) => {
   console.log(`Your name is ${name}`);
