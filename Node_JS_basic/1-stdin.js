@@ -7,12 +7,12 @@ const prog = readline.createInterface({
   output: process.stdout,
 });
 
-prog.question('Welcome to Holberton School, what is your name?', (name) => {
-  console.log(`Your name is ${name}`);
+prog.question('Welcome to Holberton School, what is your name?\n', (name) => {
+  console.log(`Your name is: ${name}`);
   prog.close();
 });
 
-process.on('SIGINT', () => {
-  console.log('This important software is now closing');
+process.on('close', () => {
+  console.log('This important software is now closing\n');
   process.exit();
 });
