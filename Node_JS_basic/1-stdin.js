@@ -12,6 +12,6 @@ prog.question('Welcome to Holberton School, what is your name?\n', (name) => {
 });
 
 prog.on('close', () => {
-  console.log('This important software is now closing\n');
+  console.log('This important software is now closing');
   process.exit();
 });
