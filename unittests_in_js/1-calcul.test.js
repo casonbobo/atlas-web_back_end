@@ -13,6 +13,9 @@ describe('calculateNumber', () => {
   it('adding 1.2 and 3.7, return 5', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 8, 1), 8);
   });
+  it('adding 1.2 and 3.7, return 5', () => {
+    assert.strictEqual(calculateNumber('DIVIDE', 1.2, 5.3), 0.2);
+  });
   it('adding 1.5 and 3.7, return 6', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1.5, 0), 'Error');
   });
