@@ -1,20 +1,17 @@
 const Utils = {
-  calculateNumber: function(type, a, b) {
-    a = Math.round(a);
-    b = Math.round(b);
-  
-    if (type === 'SUM') {
-      return a + b;
-    } else if (type === 'SUBTRACT') {
-      return a - b;
-    } else if (type === 'DIVIDE') {
-      if (b ===  0) {
-        return 'Error';
-      } else {
-        return a / b;
-      }
-    } else {
-      return 'Invalid operation';
+  calculateNumber(type, a, b) {
+    const a = Math.round(a);
+    const b = Math.round(b);
+
+    switch (type) {
+      case 'SUM':
+        return a + b;
+      case 'SUBTRACT':
+        return a - b;
+      case 'DIVIDE':
+        return b === 0 ? 'Error' : a / b;
+      default:
+        throw new Error('Unknown operation');
     }
   }
 };
