@@ -1,3 +1,5 @@
+// Utils structure for a small calc, except mult
+
 const Utils = {
   calculateNumber(type, a, b) {
     const a = Math.round(a);
