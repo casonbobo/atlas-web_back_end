@@ -1,4 +1,4 @@
-// playig around with stubs
+// playing around with stubs
 
 const expect = require('chai').expect;
 const sinon = require('sinon');
