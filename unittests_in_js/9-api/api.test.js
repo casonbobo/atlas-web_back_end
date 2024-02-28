@@ -1,5 +1,5 @@
 const request = require('request');
-const { expect } = require('chai');
+const expect = require('chai').expect;
 
 describe('Index page', function() {
   it('returns status code 200', function(done) {
