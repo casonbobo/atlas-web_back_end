@@ -4,12 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "test": "./node_modules/mocha/bin/mocha"
+      "test": "mocha test.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "express": "^4.17.1"
+      "express": "^4.18.2"
     },
     "devDependencies": {
       "chai": "^4.2.0",
